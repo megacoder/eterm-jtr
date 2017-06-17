@@ -1,0 +1,25 @@
+#!/bin/zsh
+# vim: ts=8 sw=8
+PATH="/opt/e17/bin:/opt/e16/bin:/opt/bin:${PATH}"	export PATH
+SCROLLBACK=2048
+exec Eterm								\
+	--cmod '128 128 1'						\
+	--double-buffer							\
+	--font-fx 'shadow br grey20'					\
+	--pointer-color gold3						\
+	--shade 75							\
+	--tint white							\
+	-0								\
+	-B next								\
+	-L 10000							\
+	-O								\
+	-b black							\
+	-c gold								\
+	-f gold2							\
+	-l								\
+	-t ${THEME:-smoked_glass}					\
+	-v								\
+        -L ${SCROLLBACK}						\
+	$@
+# NOTREACHED
+	--cmod '80 100 150'						\
