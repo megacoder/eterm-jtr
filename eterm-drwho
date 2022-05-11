@@ -1,0 +1,25 @@
+#!/bin/zsh
+PATH="/opt/e17/bin:/opt/16/bin:/opt/bin:${PATH}"
+SCROLLBACK=1024
+# set -x
+exec Eterm								\
+	--background-color	'#203070'				\
+	--cmod-red		128 128 128				\
+	--cmod-green		128 128 128				\
+	--cmod-blue		128 128 128				\
+	--cursor-color		'#FEFEFF'				\
+	--cursor-text-color	'#111122'				\
+	--double-buffer							\
+	--font-fx		'shadow br #203070'			\
+	--foreground-color	'#E3F6F6'				\
+	--itrans							\
+	--pointer-color		'#FEFEFF'				\
+	--resize-gravity						\
+	--save-lines		"${SCROLLBACK}"				\
+	--scrollbar-type	'next'					\
+	--shade			85					\
+	--theme			'smoked_glass'				\
+	--tint			'#CCCCDD'				\
+	--trans								\
+	--visual-bell							\
+	$@

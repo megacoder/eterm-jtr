@@ -1,0 +1,34 @@
+#!/bin/zsh
+PATH="/opt/e17/bin:/opt/e16/bin:/opt/bin:${PATH}"
+SCROLLBACK=1024
+FG='#00CF00'
+FG='#0000A0'
+FG='#0000C0'
+CURSOR='green'
+CURSOR='#0000CF'
+BG='black'
+BG='#FEFEFF'
+# set -x
+exec Eterm								\
+	--background-color	"${BG}"					\
+	--cursor-color		"${CURSOR}"				\
+	--cursor-text-color	"${CURSOR}"				\
+	--double-buffer							\
+	--font-fx		'shadow bottom_left #000040'		\
+	--foreground-color	"${FG}"					\
+	--pointer-color		"${CURSOR}"				\
+	--resize-gravity						\
+	--save-lines		"${SCROLLBACK}"				\
+	--scrollbar-type	'next'					\
+	--theme			'glass'					\
+	--visual-bell							\
+	$@
+exit 1
+	--cmod			128 128 128				\
+	--cmod-blue		128 128 128				\
+	--cmod-green		128 128 128				\
+	--cmod-red		128 128 128				\
+	--shade			75					\
+	--tint			'#113'					\
+	--trans								\
+	--itrans							\

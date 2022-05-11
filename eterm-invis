@@ -1,0 +1,28 @@
+#!/bin/zsh
+PATH="/opt/e17/bin:/opt/e16/bin:/opt/bin:${PATH}"
+SCROLLBACK=10240
+FG='#A0A0F0'
+POINTER='#8080FE'
+CTEXT='#304070'
+SHADOW='#A0A040'
+
+# set -x
+
+exec Eterm								\
+	--background-color	black					\
+	--foreground-color	"${FG}"					\
+	--pointer-color		"${POINTER}"				\
+	--cursor-color		"${POINTER}"				\
+	--cursor-text-color	"${CTEXT}"				\
+	--font-fx		"shadow br ${SHADOW}"			\
+	--double-buffer							\
+	--itrans							\
+	--trans								\
+	--resize-gravity						\
+	--save-lines		"${SCROLLBACK}"				\
+	--scrollbar		'false'					\
+	--theme			'clear'					\
+	--visual-bell							\
+	"$@"
+exit 1
+# vim: noet nonu

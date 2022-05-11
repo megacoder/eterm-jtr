@@ -1,0 +1,54 @@
+#!/bin/zsh
+PATH="/opt/e17/bin:/opt/e16/bin:/opt/bin:${PATH}"
+pick()	{
+	local	s
+	s="$(
+		od -tu -N1 -Anone /dev/urandom | tr -d ' '
+	)"
+	echo "${s}"
+}
+rgb()	{
+	r=$(pick)
+	g=$(pick)
+	b=$(pick)
+	printf "#%02X%02X%02X" "${r}" "${g}" "${b}"
+}
+red=$(pick)
+green=$(pick)
+blue=$(pick)
+brightness=$(pick)
+contrast=$(pick)
+gamma=$(pick)
+bg=$(rgb)
+fg=$(rgb)
+cursor=$(rgb)
+ctext=$(rgb)
+pointer=$(rgb)
+tint=$(rgb)
+# echo "red=${red}, green=${green}, blue=${blue}, brightness=${brightness}, contrast=${contrast}, gamma=${gamma}" >&2
+# logger -t eterm-rgb "red=${red}, green=${green}, blue=${blue}, brightness=${brightness}, contrast=${contrast}, gamma=${gamma}" >&2
+SCROLLBACK=1024
+# set -x
+exec Eterm								\
+	--background-color	"${bg}"					\
+	--cmod			"${brightness}" "${contrast}" "${gamma}" \
+	--cmod-blue		"${blue}"				\
+	--cmod-green		"${green}"				\
+	--cmod-red		"${red}"				\
+	--cursor-color		"${cursor}"				\
+	--cursor-text-color	"${ctext}"				\
+	--double-buffer							\
+	--font-fx		'shadow black'				\
+	--foreground-color	"${fg}"					\
+	--itrans							\
+	--pointer-color		"${pointer}"				\
+	--resize-gravity						\
+	--save-lines		"${SCROLLBACK}"				\
+	--scrollbar-type	'next'					\
+	--shade			75					\
+	--theme			'smoked_glass'				\
+	--tint			"${tint}"				\
+	--trans								\
+	--visual-bell							\
+	$@
+exit 0
